@@ -1,0 +1,63 @@
+{%  extends 'app/main.html' %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+    <div class="container patientcontainer">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="profile">Votre profile</h4>
+            </div>
+            <div class="card-body">
+               
+                <div class="row div_image_profile">
+                    <img class="imageprofile" src="{{request.user.patient.pic.url}}"> 
+                    <div class="col-md">
+                    
+                        <div class="card card-body cardinfo">
+                            <div>
+                                {{patient.name}} {{patient.prenom}}
+                            </div>
+                            <div>
+                                {{patient.age}} ans
+                            </div>
+                            <div>
+                                {{patient.user.email}}
+                            </div>
+                            <div>
+                            {% for m in maladie %}
+                                {{m.maladie_name}},
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+        
+                
+            
+            
+            
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!--
+    <h4 class="profile">Tester votre x-ray chest</h4>
+    <h3>Patient Profile</h3>
+
+    <h3>Mes maladies</h3>
+
+    {% for m in maladie %}
+    <p>{{m.maladie_name}}</p>
+    {% endfor %}
+
+    <h3>Mes medecins</h3>
+    {% for d in doctor %}
+    <p>{{d.pk}} {{d.nom}} {{d.prenom}}</p>
+
+{% endfor %}
+    -->
+<!--{{maladie}}-->
+
+{% endblock content %}

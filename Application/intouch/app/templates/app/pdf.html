@@ -1,0 +1,23 @@
+{%  extends 'app/main.html' %}
+{% load humanize %}
+{% block content %}
+    {%  include 'app/navbarlogo.html' %}
+    
+    <div class="mx-auto" >
+        <div>
+            <p >Le client: {{user.name}} {{user.prenom}}</p>
+            <p >Le jours: {{time}} </p>
+        </div>
+               
+       
+        <img class="mx-auto" src="{{saved.test_image.url}}" >
+        <p >
+            {{saved.probability}}
+        </p>
+        
+      
+        
+    </div>
+   
+
+{% endblock content %}

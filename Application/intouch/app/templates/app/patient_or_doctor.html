@@ -1,0 +1,18 @@
+{%  extends 'app/main.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center body-patient-or-doctor">
+        <h3>Veuillez choisir une option</h3>
+        <form action="{% url 'choice' %}" method="POST" >
+            {% csrf_token %}
+            <button type="submit" name="medecin" value="Save&Home">Je suis un medecin</button>
+            <button type="submit" name="malade" value="Save&Next">Je suis un malade</button>
+            <button type="submit" name="continuer" value="Save&Next" class="continuer-bnt">Continuer</button>
+        </form>
+
+        {% for message in messages %}
+            <p id="messages">{{message}}</p>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

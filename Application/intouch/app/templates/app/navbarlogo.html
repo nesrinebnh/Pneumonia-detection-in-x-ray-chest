@@ -1,0 +1,58 @@
+{% load static %}
+
+
+<style>
+ .navbar-default {
+      background-color: #507de2 !important;
+  }
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+  .navbar-nav > .active > a {
+    color: white !important; 
+  }
+  .nav-item > a:hover {
+    color: white !important;
+  }
+  .nav-item > a {
+    color: black !important;
+  }
+  
+  /* OR*/
+
+  
+
+</style>
+
+<nav class="navbar navbar-default  navbar-expand-lg navbar-light bg-primary justify-content-center " >
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link"><img src="{% static 'images/logo.png' %}"></a>
+      </li>
+     
+     
+    </ul>
+  </div>
+  <!--
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+  -->
+</nav>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+      var url = window.location;
+      $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+      $('ul.nav a').filter(function() {
+           return this.href == url;
+      }).parent().addClass('active');
+  });
+</script> 

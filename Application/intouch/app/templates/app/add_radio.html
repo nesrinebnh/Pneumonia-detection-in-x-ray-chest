@@ -1,0 +1,38 @@
+{%  extends 'app/main.html' %}
+{% load humanize %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+    <div class="mx-auto" style="text-align: center;margin-top: 40px; width: 500px; background: #1c1b29; display: flex; flex-direction: column; justify-content: center; box-shadow: 4px 4px 8px 4px #ffffff; border-radius: 10px;">
+        <div>
+            <p style="color: white;">Ajouter votre radiographie thoracique et obtenez votre interpretation.</p>
+        </div>
+        <div>
+            <p style="font-size: 10px;color: white;">
+                Nous pouvons diagnostiquer La maladie pneumonia seulement pour le moment,
+                Nous allons offrir plus d'options prochainement.
+            </p>
+        </div>
+        {% if not saved %}
+            <form method="POST" action="{% url 'add_radio' request.user %}" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                {{form.test_image}}
+                <input class="btn"  type="submit" name="Diagnostic" value="Commencer la diagnostic" style="color: black;border: none; background: #ffffff; margin-bottom: 20px; margin-top: 20px;  ">
+            </form>
+
+        {% else %}
+            <img class="mx-auto" src="{{saved.test_image.url}}" style="width: 300px; height: 200px;">
+            <p style="color: white;">
+                {{saved.probability}}
+            </p>
+            <form method="POST" action="{% url 'download' request.user saved.pk %}" > 
+                {% csrf_token %}
+                <input type="submit" value="Download">
+            </form>
+            <div>
+                <p style="color: white;">N'oublier pas d'envoyer ce résultat à votre medecin de préférence.</p>
+            </div>
+        {% endif %}
+    </div>
+   
+
+{% endblock content %}

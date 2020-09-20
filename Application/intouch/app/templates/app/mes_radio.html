@@ -1,0 +1,45 @@
+{%  extends 'app/main.html' %}
+{% load humanize %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+   
+
+    <h3 style="text-align: center;margin-top: 20px;">Mes Radio</h3>
+    <div style=" text-align: right;">
+        <a href="{% url 'add_radio' request.user %}" class="top-menu" ><i class="fas fa-plus-circle" style="color: #1c1b29;font-size: 25px; margin-right: 65px; "></i></a>
+    </div>
+
+    <div class="container">
+        {% if test%}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Maladie</th>
+                    <th>Diagnostic</th>
+                    <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in test %}
+                            <td>Pneumonia</td>
+                            <td>{{m.probability}} </td>
+                            <td>{{m.date}} <!--{{m.date|naturaltime}}-->  </td>
+                        </tr>
+                        
+                        
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center;">Vous n'avez aucune conversation avec {{medecin.user.username}}</p>
+        {% endif %}
+    </div>
+  
+        
+       
+
+   <!--
+-->
+
+{% endblock content %}

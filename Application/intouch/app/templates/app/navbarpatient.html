@@ -1,0 +1,65 @@
+{% load static %}
+
+
+<style>
+ .navbar-default {
+      background-color: #507de2 !important;
+  }
+  .hello-msg{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 20px;
+  }
+  .navbar-nav > .active > a {
+    color: white !important; 
+  }
+  .nav-item{
+    margin-right: 30px;
+  }
+  .nav-item > a:hover {
+    color: white !important;
+  }
+  .nav-item > a {
+    color: black !important;
+    font-size: 10dp;
+  }
+  
+  /* OR*/
+
+  
+
+</style>
+
+<nav class="navbar navbar-default  navbar-expand-lg navbar-light bg-primary justify-content-center " >
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'patient' request.user %}">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mesMedecin' request.user %}">Mes médecins</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><img src="{% static 'images/logo.png' %}"></a>
+      </li>
+      <li class="nav-item">
+        
+        <a class="nav-link" href="{% url 'radio' request.user %}">Mes Radios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+     
+    </ul>
+  </div>
+  <!--
+  <span class="hello-msg">Hello, {{request.user}}</span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+  -->
+</nav>
+
+</script> 

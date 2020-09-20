@@ -1,0 +1,35 @@
+{%  extends 'app/main.html' %}
+{% load humanize %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+    
+    
+    <div class="container" style="box-shadow: 10px 10px 8px 10px #1c1b29; margin-top: 20px; padding-bottom: 20px;">
+        
+            <div >
+                <div class="well"><h3 style="color: white;text-decoration: underline;margin-bottom: 20px; padding-top: 20px; padding-bottom: 20px;">{{msg.title}}</h3></div>
+            </div>
+            <div >
+                <div class="well"><p style="font-size: 14px;">Message Envoyé de la part de: <span style="color: white;">{{msg.sender}}</span> à <span style="color: white;">{{msg.date}}</span></p></div>
+            </div>
+            <div >
+                <div class="well"><p style="font-size: 14px;">{{ msg.body|linebreaksbr }}</p></div>
+            </div>
+            {% if msg.pic %}
+            <div >
+                <div class="well"><img src="{{msg.pic.url}}" style="width: 200px; height: 200px;"></div>
+            </div>
+            {% endif %}
+            <div style=" text-align: right;">
+                <a href="#" class="top-menu" ><i class="fas fa-trash" style="color: #1c1b29;font-size: 15px;"></i></a>
+            </div>
+    </div>
+    
+    
+    
+    
+   
+    
+
+
+{% endblock content %}

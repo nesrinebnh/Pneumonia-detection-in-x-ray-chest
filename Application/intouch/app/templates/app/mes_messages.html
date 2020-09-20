@@ -1,0 +1,41 @@
+{%  extends 'app/main.html' %}
+{% load humanize %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+   
+
+    <h3 style="text-align: center;margin-top: 20px;">Mes messages avec {{medecin.user.username}}</h3>
+    <div style=" text-align: right;">
+        <a href="{% url 'contact' request.user medecin.pk %}" class="top-menu" ><i class="fas fa-plus-circle" style="color: #1c1b29;font-size: 25px; margin-right: 65px; "></i></a>
+    </div>
+    <div class="container">
+        {% if msgsend%}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in msgsend %}
+                
+                            <td><a href="{% url 'messagedetail' request.user medecin.pk m.pk %}" style="color: black;">{{m.title}}</a> </td>
+                            <td>{{m.date}} <!--{{m.date|naturaltime}}-->  </td>
+                        </tr>
+                        
+                        
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p style="text-align: center;">Vous n'avez aucune conversation avec {{medecin.user.username}}</p>
+        {% endif %}
+    </div>
+        
+       
+
+   
+
+{% endblock content %}

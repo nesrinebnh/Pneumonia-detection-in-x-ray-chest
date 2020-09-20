@@ -1,0 +1,40 @@
+
+{%  extends 'app/main.html' %}
+
+{% block content %}
+    {{pk}}
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card-display">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">Veuillez fournir des informations correctes</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="{% url 'register_maladie' pk %}">
+                        {% csrf_token %}
+					
+						
+						<div class="input-group mb-3">
+							
+                            {{maladie.maladie_name}} 
+                            &nbsp;&nbsp; &nbsp;
+							<a class="btn btn-default some" href=""><span class="glyphicon glyphicon-plus"></span></a>
+						</div>
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+                             
+                             <input class="btn login_btn" type="submit" value="Continuer">
+				   		</div>
+					</form>
+					
+					
+				</div>
+                {{form.errors}}
+				
+			</div>
+				
+		</div>
+	</div>
+	
+
+{% endblock content %}

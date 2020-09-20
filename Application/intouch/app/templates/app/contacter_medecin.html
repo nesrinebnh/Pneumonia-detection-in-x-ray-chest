@@ -1,0 +1,15 @@
+{%  extends 'app/main.html' %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+    <div class="container">
+        <h5>Contacter {{doctor.nom}} {{doctor.prenom}}</h5>
+        <div>
+            <form action="{% url 'contact' request.user doctor.pk%}" method="POST" enctype="multipart/form-data">    
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn"  type="submit" name="Envoyermessage" value="Envoyer message" style="color: white;border: none; background: #1c1b29; margin-bottom: 20px;">
+            </form>
+        </div>
+    </div>
+   
+{% endblock content %}

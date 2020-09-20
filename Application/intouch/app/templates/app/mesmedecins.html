@@ -1,0 +1,52 @@
+{%  extends 'app/main.html' %}
+{% block content %}
+    {%  include 'app/navbarpatient.html' %}
+   
+
+    <h3 style="text-align: center;margin-top: 20px;">Mes medecins</h3>
+    <div style="text-align: center; justify-content: center;">
+        <div style="text-align: left; margin-left: 55px;">
+            {% for d in doctor %}
+                <div class="card" style="width:300px;display:inline-block;margin-left: 10px;margin-bottom: 20px;">
+                    <div class="card-header center" style="text-align: center;">
+                        <img class="imageprofile" src="{{d.pic.url}}"> 
+                    </div>      
+                    <div class="card card-body cardinfo">
+                        <div>
+                            Nom: {{d.nom}} {{d.prenom}}
+                        </div>
+                        <div>
+                            Téléphone: {{d.tlf}} 
+                        </div>
+                        <div>
+                            Email: {{d.user.email}}
+                        </div>
+                        <div>
+                            Grade: {{d.grade}}
+                        </div>
+                        <div>
+                            Specialité: {{d.specialite}}
+                        </div>
+                    </div>
+                        
+                    <div class="card-footer center" style="text-align: center; ">
+                        
+                        <form  action="{% url 'mesMessages' request.user d.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="message" value="message" style="border: none; background: #1c1b29; color: white; height: 32px; width: 100px;">Message</button>
+                        </form>
+                    
+                    </div>
+                </div>
+                    
+                
+    
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+    
+<!--{{maladie}}-->
+
+{% endblock content %}

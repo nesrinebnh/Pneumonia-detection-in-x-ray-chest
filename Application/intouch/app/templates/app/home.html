@@ -1,0 +1,21 @@
+{%  extends 'app/main.html' %}
+{% block content %}
+{%  include 'app/navbarlogo.html' %}
+<form action="{% url 'home' %}" method="POST">
+				
+    {% csrf_token %}
+    
+    <div class="landingpage">
+        <input class="btn " type="submit" value="Créer un compte">
+        <div class="d-flex justify-content-center links">
+            Vous avez déjà un compte? <a href="{% url 'login' %}" class="ml-2">Sign in</a>
+        </div>
+        <div class="d-flex justify-content-center links">
+            <p>Vous pouvez désactiver votre compte a tout moment</p>
+        </div>
+    </div>
+    
+</form>
+
+
+{% endblock content %}
